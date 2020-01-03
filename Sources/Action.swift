@@ -48,7 +48,13 @@ extension Alertift {
         /// - Parameter actionHandler: Action handler for **UIAlertAction**
         /// - Returns: Instance of **UIAlertAction**
         func buildAlertAction(handler actionHandler: Action.Handler?) -> UIAlertAction {
-            return UIAlertAction(title: title, style: style, handler: actionHandler)
+            let action = UIAlertAction(title: title, style: style, handler: actionHandler)
+            
+            if style == .default {
+                action.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            }
+            
+            return action
         }
     }
 }
